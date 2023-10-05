@@ -1,0 +1,14 @@
+#counter {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-items-center {
+  align-items: center;
+}

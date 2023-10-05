@@ -1,0 +1,37 @@
+{{define "index.html"}}<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Libre Questions</title>
+  <link href="style.css" rel="stylesheet" />
+
+  <script defer="defer" src="https://unpkg.com/htmx.org@1.9.6"></script>
+</head>
+<body>
+  {{if eq .Name ""}}
+    <form hx-post="/name" hx-swap="outerHTML">
+      <input type="text" name="name" placeholder="Your Name" />
+
+      <button type="submit">
+        Submit
+      </button>
+    </form>
+  {{else}}
+    {{template "counter" .}}
+  {{end}}
+</body>
+</html>
+{{end}}
+
+{{define "counter"}}
+<div id="counter">
+  <div class="flex-column flex-items-center">
+    <span>Hello {{.Name}}</span>
+    <button hx-post="/increase_count" hx-swap="outerHTML" hx-target="#counter">
+      Click Me
+    </button>
+    <span>{{.Total}}</span>
+  <div>
+</div>
+{{end}}
+
